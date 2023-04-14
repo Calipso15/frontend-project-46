@@ -44,7 +44,7 @@ const getDiff = (diffInfo) => {
   return `{\n${result.join('\n')}\n}`;
 };
 
-const getAbsolutPath = (filePath) => path.resolve(process.cwd(), 'files', filePath);
+const getAbsolutPath = (filePath) => path.resolve(process.cwd(), '__fixtures__', filePath);
 
 const readFile = (filePath) => fs.readFileSync(getAbsolutPath(filePath), 'utf-8');
 
