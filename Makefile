@@ -6,5 +6,9 @@ publish:
 	npm publish --dry-run
 lint:
 	npx eslint .
-report:
-	test-coverage
+test_install:
+	npm i jest
+test:
+	NODE_OPTIONS=--experimental-vm-modules npx jest
+test-coverage:
+	npm test -- --coverage --coverageProvider=v8
