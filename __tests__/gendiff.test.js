@@ -14,11 +14,9 @@ const expectedJSON = readFile('jsonResult.txt');
 const extensions = ['json'];
 
 test.each([
-    extensions,
-  ])('main test', (extension) => {
-    const filepath1 = getFixturePath(`file1.${extension}`);
-    const filepath2 = getFixturePath(`file2.${extension}`);
-  
-    expect(genDiff(filepath1, filepath2, 'json')).toBe(expectedJSON);
-  });
-  
+  extensions,
+])('main test', (extension) => {
+  const filepath1 = getFixturePath(`file1.${extension}`);
+  const filepath2 = getFixturePath(`file2.${extension}`);
+  expect(genDiff(filepath1, filepath2, 'json')).toBe(expectedJSON);
+});
