@@ -28,23 +28,23 @@ const getDiffInfo = (obj1, obj2) => {
 const getDiff = (diffInfo) => {
   const result = diffInfo.map((item) => {
     if (item.status === 'delited') {
-      return (`- ${item.key}: ${item.value}`);
+      return (`  - ${item.key}: ${item.value}`);
     }
     if (item.status === 'added') {
-      return (`+ ${item.key}: ${item.value}`);
+      return (`  + ${item.key}: ${item.value}`);
     }
     if (item.status === 'unchanged') {
-      return (`  ${item.key}: ${item.value}`);
+      return (`    ${item.key}: ${item.value}`);
     }
     if (item.status === 'changed') {
-      return (`- ${item.key}: ${item.value.oldValue}\n+ ${item.key}: ${item.value.newValue}`);
+      return (`  - ${item.key}: ${item.value.oldValue}\n  + ${item.key}: ${item.value.newValue}`);
     }
     return undefined;
   });
   return `{\n${result.join('\n')}\n}`;
 };
 
-const getAbsolutPath = (filePath) => path.resolve(process.cwd(), '__fixtures__', filePath);
+const getAbsolutPath = (filePath) => path.resolve(process.cwd(), filePath);
 
 const readFile = (filePath) => fs.readFileSync(getAbsolutPath(filePath), 'utf-8');
 
