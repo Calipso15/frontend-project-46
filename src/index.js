@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import path from 'path';
 import fs from 'fs';
+import getData from './parsers.js';
 
 const getDiffInfo = (obj1, obj2) => {
   const keys1 = Object.keys(obj1);
@@ -48,7 +49,7 @@ const getAbsolutPath = (filePath) => path.resolve(process.cwd(), filePath);
 
 const readFile = (filePath) => fs.readFileSync(getAbsolutPath(filePath), 'utf-8');
 
-const getObject = (filePath) => JSON.parse(readFile(filePath));
+const getObject = (filePath) => getData(readFile(filePath), filePath.split('.')[1]);
 
 const genDiff = (filePath1, filePath2) => {
   const object1 = getObject(filePath1);

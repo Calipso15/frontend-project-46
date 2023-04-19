@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
+import { expect } from '@jest/globals';
 import genDiff from '../src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -10,8 +11,9 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 const expectedJSON = readFile('jsonResult.txt');
+const expectedYML = readFile('resultYML.txt');
 
-const extensions = ['json'];
+const extensions = ['json', 'yml'];
 
 test.each([
   extensions,
@@ -19,4 +21,5 @@ test.each([
   const filepath1 = getFixturePath(`file1.${extension}`);
   const filepath2 = getFixturePath(`file2.${extension}`);
   expect(genDiff(filepath1, filepath2, 'json')).toBe(expectedJSON);
+  expect(genDiff(filepath1, filepath2, 'yml')).toBe(expectedYML);
 });
