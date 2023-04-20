@@ -6,8 +6,8 @@ import getData from './parsers.js';
 const getDiffInfo = (obj1, obj2) => {
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);
-  const uniq = _.uniq([...keys1, ...keys2]);
-  const sortUniq = _.sortBy(uniq);
+  const union = _.union(keys1, keys2);
+  const sortUniq = _.sortBy(union);
 
   const result = sortUniq.map((key) => {
     if (!_.has(obj1, key)) {
