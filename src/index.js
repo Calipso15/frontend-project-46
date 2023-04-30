@@ -1,42 +1,28 @@
-import _ from 'lodash';
 import path from 'path';
 import fs from 'fs';
 import getData from './parsers.js';
-
-const getDiffInfo = (obj1, obj2) => {
-  const keys1 = Object.keys(obj1);
-  const keys2 = Object.keys(obj2);
-  const union = _.union(keys1, keys2);
-  const sortUniq = _.sortBy(union);
-
-  const result = sortUniq.map((key) => {
-    if (!_.has(obj1, key)) {
-      return (`  + ${key}: ${obj2[key]}`);
-    }
-    if (!_.has(obj2, key)) {
-      return (`  - ${key}: ${obj1[key]}`);
-    }
-    if (obj1[key] !== obj2[key]) {
-      return (`  - ${key}: ${obj1[key]}\n  + ${key}: ${obj2[key]}`);
-    }
-    if (_.has(obj1, key) && _.has(obj2, key) && obj1[key] === obj2[key]) {
-      return (`    ${key}: ${obj1[key]}`);
-    }
-    return undefined;
-  });
-  return `{\n${result.join('\n')}\n}`;
-};
+import formatData from './formatters/index.js';
+import getAST from './formatters/getAST.js';
 
 const getAbsolutPath = (filePath) => path.resolve(process.cwd(), filePath);
 
 const readFile = (filePath) => fs.readFileSync(getAbsolutPath(filePath), 'utf-8');
 
-const getObject = (filePath) => getData(readFile(filePath), filePath.split('.')[1]);
+const getFormat = (pathToFile) => {
+  const extname = path.extname(pathToFile);
+  return extname.substring(extname.lastIndexOf('.') + 1);
+};
 
-const genDiff = (filePath1, filePath2) => {
-  const object1 = getObject(filePath1);
-  const object2 = getObject(filePath2);
-  return getDiffInfo(object1, object2);
+const genDiff = (filePath1, filePath2, format = 'stylish') => {
+  const content1 = readFile(filePath1);
+  const content2 = readFile(filePath2);
+
+  const data1 = getData(content1, getFormat(filePath1));
+  const data2 = getData(content2, getFormat(filePath2));
+
+  const AST = getAST(data1, data2);
+
+  return formatData(AST, format);
 };
 
 export default genDiff;

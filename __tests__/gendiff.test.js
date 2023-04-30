@@ -8,17 +8,18 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
+const readFile = (filename) => fs.readFileSync(filename, 'utf-8');
 
-const expected = readFile('stylish');
+const formats = ['json', 'yml'];
 
-const extensions = ['json', 'yml'];
+describe('gendiff', () => {
+  const getResult = (format) => readFile(getFixturePath(format));
 
-test.each([
-  extensions,
-])('main test', (extension) => {
-  const filepath1 = getFixturePath(`file1.${extension}`);
-  const filepath2 = getFixturePath(`file2.${extension}`);
-  expect(genDiff(filepath1, filepath2, 'json')).toBe(expected);
-  expect(genDiff(filepath1, filepath2, 'yml')).toBe(expected);
+  test.each(formats)('gendiff & format', (format) => {
+    const pathToFile1 = getFixturePath(`file1.${format}`);
+    const pathToFile2 = getFixturePath(`file2.${format}`);
+    expect(genDiff(pathToFile1, pathToFile2)).toEqual(getResult('stylish'));
+    expect(genDiff(pathToFile1, pathToFile2, 'yml')).toEqual(getResult('json'));
+    expect(genDiff(pathToFile1, pathToFile2, 'json')).toEqual(getResult('json'));
+  });
 });
