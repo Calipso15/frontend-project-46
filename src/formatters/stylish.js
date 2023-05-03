@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
-const indent = 4;
-const initial = 2;
+const indent = 4; // количество пробелов на один уровень
+const initial = 2; // отступ влево
 
 const stringify = (val, depth) => {
   if (!_.isObject(val)) {
@@ -11,13 +11,12 @@ const stringify = (val, depth) => {
   const keys = Object.keys(val);
 
   const result = keys.map((el) => {
-    const currentValue = `${stringify(val[el], depth + 1)}`;
     const currentDepth = (depth + 1) * indent;
-
-    return `{\n${' '.repeat(currentDepth + initial)}  ${el}: ${currentValue}\n${' '.repeat(currentDepth)}}`;
+    const currentValue = `${stringify(val[el], depth + 1)}`;
+    return `\n${' '.repeat(currentDepth + initial)}  ${el}: ${currentValue}\n${' '.repeat(currentDepth)}`;
   });
 
-  return result.join('\n');
+  return `{${result.join('')}}`;
 };
 
 const getStylish = (rowData, depth) => {
