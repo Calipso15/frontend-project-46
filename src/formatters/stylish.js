@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
-const indent = 4; // количество пробелов на один уровень
-const initial = 2; // отступ влево
+const indent = 4;
+const initial = 2;
 
 const stringify = (val, depth) => {
   if (!_.isObject(val)) {
