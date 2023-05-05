@@ -41,6 +41,8 @@ Options:
 ### Checking json files: 
 <a href="https://asciinema.org/a/77TxAc2XkIbgyaAdEa70rjNT1" target="_blank"><img src="https://asciinema.org/a/77TxAc2XkIbgyaAdEa70rjNT1.svg" /></a>
 
+### Checking yml and yaml files: 
 <a href="https://asciinema.org/a/TVuWPvnaQebSrClGjTWaeyCo6" target="_blank"><img src="https://asciinema.org/a/TVuWPvnaQebSrClGjTWaeyCo6.svg" /></a>
 
+### Checking the stylish format:
 <a href="https://asciinema.org/a/g4ONWA65EPTnofornQVECmulG" target="_blank"><img src="https://asciinema.org/a/g4ONWA65EPTnofornQVECmulG.svg" /></a>
