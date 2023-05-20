@@ -46,3 +46,7 @@ Options:
 
 ### Checking the stylish format:
 <a href="https://asciinema.org/a/g4ONWA65EPTnofornQVECmulG" target="_blank"><img src="https://asciinema.org/a/g4ONWA65EPTnofornQVECmulG.svg" /></a>
+
+### Checking the plain format:
+<a href="https://asciinema.org/a/4EQaxwbOQgC8lLK6pNvPYhKep" target="_blank"><img src="https://asciinema.org/a/4EQaxwbOQgC8lLK6pNvPYhKep.svg" /></a>
+
