@@ -8,6 +8,9 @@ const getData = (content, type) => {
     case 'yml':
       return yaml.load(content);
 
+    case 'yaml':
+      return yaml.load(content);
+
     default:
       throw new Error(`Unknown type: '${type}'!`);
   }

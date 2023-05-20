@@ -1,8 +1,8 @@
 import path from 'path';
 import fs from 'fs';
-import getData from './parsers.js';
+import getData from './parser.js';
 import formatData from './formatters/index.js';
-import getAST from './formatters/getAST.js';
+import getAST from './getAST.js';
 
 const getAbsolutPath = (filePath) => path.resolve(process.cwd(), filePath);
 
@@ -13,7 +13,7 @@ const getFormat = (pathToFile) => {
   return extname.substring(extname.lastIndexOf('.') + 1);
 };
 
-const genDiff = (filePath1, filePath2, format) => {
+const genDiff = (filePath1, filePath2, format = 'stylish') => {
   const content1 = readFile(filePath1);
   const content2 = readFile(filePath2);
 

@@ -8,8 +8,6 @@ export default (rowData, format) => {
       return getStylish(rowData);
     case 'json':
       return getJSON(rowData);
-    case 'yml':
-      return getJSON(rowData);
     case 'plain':
       return makePlain(rowData);
     default:

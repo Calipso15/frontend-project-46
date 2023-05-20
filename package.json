@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/Calipso15/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/Calipso15/frontend-project-46/actions)",
+  "description": "Generator of difference is the CLI programm that generate difference between two files. Supporting formats: JSON, YML, YAML.",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
