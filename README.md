@@ -50,3 +50,5 @@ Options:
 ### Checking the plain format:
 <a href="https://asciinema.org/a/4EQaxwbOQgC8lLK6pNvPYhKep" target="_blank"><img src="https://asciinema.org/a/4EQaxwbOQgC8lLK6pNvPYhKep.svg" /></a>
 
+### Checking the json format:
+<a href="https://asciinema.org/a/S2SDcHGdnkXPhvSfVPowh4b3G" target="_blank"><img src="https://asciinema.org/a/S2SDcHGdnkXPhvSfVPowh4b3G.svg" /></a>
