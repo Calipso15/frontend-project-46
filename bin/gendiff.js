@@ -12,8 +12,13 @@ program
   .option('-f, --format <type>', 'output format', 'stylish')
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
-    const difference = gendiff(filepath1, filepath2, program.opts().format);
-    console.log(difference);
+    const options = program.opts();
+    if (options.format === 'plain') {
+      console.log(gendiff(filepath1, filepath2, 'plain'));
+    } else if (options.format === 'stylish' || options.format === undefined) {
+      console.log(gendiff(filepath1, filepath2, 'stylish'));
+    } else if (options.format === 'json') {
+      console.log(gendiff(filepath1, filepath2, 'json'));
+    }
   });
-
 program.parse();

@@ -24,7 +24,6 @@ const getAST = (obj1, obj2) => {
       key, type: 'changed', valueBefore: obj1[key], valueAfter: obj2[key],
     };
   });
-
   return result;
 };
 

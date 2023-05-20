@@ -13,7 +13,7 @@ const getFormat = (pathToFile) => {
   return extname.substring(extname.lastIndexOf('.') + 1);
 };
 
-const genDiff = (filePath1, filePath2, format = 'stylish') => {
+const genDiff = (filePath1, filePath2, format) => {
   const content1 = readFile(filePath1);
   const content2 = readFile(filePath2);
 
